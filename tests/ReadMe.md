@@ -2,7 +2,7 @@
 
 The scripts here, along with some fixtures, constitute the test suite.
 They are run in the intended order by the helper scripts `test.py` and
-`coverage.py` in the `tools` folder.
+`coverage.py` in the `tooling` folder.
 
 Note that when running those scripts from the project folder, i.e. the
 parent folder of this one here, then they will test what's inside the
