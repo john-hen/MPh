@@ -37,6 +37,8 @@ test = [
     'pyTest',
     'pyTest-cov',
     'Flake8-pyproject',
+    'Flake8-pyi',
+    'BasedMypy',
 ]
 docs = [
     'Sphinx >= 6.1',
@@ -48,6 +50,8 @@ dev = [                       # Must always be the union of all other extras.
     'pyTest',
     'pyTest-cov',
     'Flake8-pyproject',
+    'Flake8-pyi',
+    'BasedMypy',
     'Sphinx >= 6.1',
     'Furo',
     'MyST-parser >= 1.0',
@@ -95,7 +99,37 @@ ignore = [
 ]
 per-file-ignores = [
     '__init__.py:F401',      # Imported but unused.
+    '*.pyi:E704,Y041',       # Multiple statements on one line.
+                             # Use "complex" instead of "float | complex".
 ]
+
+
+# Type checker: BasedMypy
+
+[tool.mypy]
+files = ['mph/']
+strict_equality = true
+extra_checks = true
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_incomplete_stub = true
+warn_unused_configs = true
+warn_unused_ignores = true
+implicit_optional = true
+disable_error_code = ['explicit-override']
+
+[[tool.mypy.overrides]]
+module = ['jpype.*']
+ignore_missing_py_typed = true
+
+[[tool.mypy.overrides]]
+module = ['com.comsol.*']
+ignore_missing_imports = true
 
 
 # Test runner: pyTest
