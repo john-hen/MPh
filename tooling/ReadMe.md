@@ -49,7 +49,7 @@ the package.
 * Tag commit with version number, e.g. `git tag v1.2.0`
 * Force `stable` branch to latest commit: `git branch -f stable`
 * Same for the current documentation branch: `git branch -f 1.2`
-* Run code linter: `flake8`
+* Run code linter: `python tooling/lint.py`
 * Test docs build: `python tooling/docs.py`
 * Test wheel build: `python tooling/wheel.py`
 * Run tests for each supported Python/OS: `python3x tooling/test.py`
